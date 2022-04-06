@@ -1,15 +1,15 @@
+import { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useContext } from "react";
-import AuthApi from "../../context/AuthApi";
 import { isEqual } from "lodash";
 
-// można dać credentials do kontekstu? czy lepiej np. z poziomu App przekazywać w dół propsami?
 import { CREDENTIALS } from "../../credentials";
+
+// context
+import AuthApi from "../../context/AuthApi";
 
 const LoginForm = () => {
   const Auth = useContext(AuthApi);
-
   interface Ivalues {
     email: string;
     password: string;
@@ -48,9 +48,9 @@ const LoginForm = () => {
         }}
       >
         <h1>Log in</h1>
-        <Field type="email" name="email" placeholder='E-mail address' />
+        <Field type="email" name="email" placeholder="E-mail address" />
         <ErrorMessage name="email" component="div" />
-        <Field type="password" name="password" placeholder='Password' />
+        <Field type="password" name="password" placeholder="Password" />
         <ErrorMessage name="password" component="div" />
         <button type="submit">Login</button>
       </Form>

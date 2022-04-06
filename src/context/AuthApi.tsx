@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useCallback } from "react";
 import Cookies from "js-cookie";
 
 const AuthApi = createContext({
@@ -10,22 +10,24 @@ const AuthApi = createContext({
 export const AuthApiProvider: React.FC = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const logInHandler = () => {
+  const logInHandler = useCallback(() => {
     Cookies.set("user", "isLoggedIn");
     setIsLoggedIn(true);
-  };
-  const logOutHandler = () => {
+  }, []);
+
+  const logOutHandler = useCallback(() => {
     Cookies.remove("user");
     setIsLoggedIn(false);
-  };
+  }, []);
 
-  const readCookies = () => {
+  const readCookies = useCallback(() => {
     const user = Cookies.get("user");
     if (user) setIsLoggedIn(true);
-  };
+  }, []);
 
   useEffect(() => {
     readCookies();
+    // eslint-disable-next-line
   }, []);
 
   return (

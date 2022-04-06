@@ -1,16 +1,16 @@
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+
+// context
 import AuthApi from "../context/AuthApi";
 
-import {Navigate} from 'react-router-dom'
-import Dashboard from './Dashboard'
+// components
+import Dashboard from "./Dashboard";
 
 const ProtectedRoute = () => {
   const Auth = useContext(AuthApi);
 
-  return (
-    Auth.isLoggedIn ? 
-    <Dashboard /> : 
-    <Navigate to='/login' replace/>)
+  return Auth.isLoggedIn ? <Dashboard /> : <Navigate to="/login" replace />;
 };
 
-export default ProtectedRoute
+export default ProtectedRoute;

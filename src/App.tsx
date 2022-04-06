@@ -1,5 +1,4 @@
-import React from "react";
-
+// styles
 import "./index.css";
 
 // context API
@@ -11,7 +10,7 @@ import CustomRoutes from "./components/CustomRoutes";
 export default function App() {
   return (
     <AuthApiProvider>
-        <CustomRoutes />
+      <CustomRoutes />
     </AuthApiProvider>
   );
 }

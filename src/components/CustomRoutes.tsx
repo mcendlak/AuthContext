@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import AuthApi from "../context/AuthApi";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
+
+// context
+import AuthApi from "../context/AuthApi";
 
 // components
 import Login from "./Login";
